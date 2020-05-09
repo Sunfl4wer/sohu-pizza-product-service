@@ -224,6 +224,7 @@ public class ProductApi {
   //////////////////////////////////////////////////////////////////////////////////////////////////////
   //  Admin API                                                                                       //
   //////////////////////////////////////////////////////////////////////////////////////////////////////
+  /*
   @RequestMapping(
       value="/products/createMany", 
       method=RequestMethod.POST, 
@@ -241,4 +242,5 @@ public class ProductApi {
                                       headers,
                                       HttpStatus.CREATED);
   }
+  */
 }
