@@ -15,5 +15,5 @@ See the [wiki](https://github.com/Sunfl4wer/sohu-pizza-product-service/wiki) of 
         * Uncomment this [line](https://github.com/Sunfl4wer/sohu-pizza-product-service/blob/360d7f9eea5d8593731724b0571815832920b8ce/src/main/resources/application-prod.properties#L9)
     3. Run this command `mvn package`
     4. Run this command `docker build -f Dockerfile -t docker-pizza-service`
-    5. Open powershell(window) or terminal(linux) type `docker volume create mongo_product`. This will create a volume name _mongo_product_ in docker
-    6. Run this command `docker-compose up`
+    5. Run this command `docker volume create mongo_product`. This will create a volume name _mongo_product_ in docker
+    6. Run this command `docker-compose up` to run the service on docker
