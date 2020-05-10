@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,6 +35,7 @@ import com.pycogroup.pizza.product.common.Reason;
 import com.pycogroup.pizza.product.dto.ResponseCollectionDto;
 import com.pycogroup.pizza.product.dto.ResponseDto;
 import com.pycogroup.pizza.product.model.Category;
+import com.pycogroup.pizza.product.model.Product;
 import com.pycogroup.pizza.product.service.ProductService;
 
 @CrossOrigin(origins="*", maxAge = 3600)
@@ -222,7 +224,6 @@ public class ProductApi {
   //////////////////////////////////////////////////////////////////////////////////////////////////////
   //  Admin API                                                                                       //
   //////////////////////////////////////////////////////////////////////////////////////////////////////
-  /*
   @RequestMapping(
       value="/products/createMany", 
       method=RequestMethod.POST, 
@@ -240,5 +241,4 @@ public class ProductApi {
                                       headers,
                                       HttpStatus.CREATED);
   }
-  */
 }
