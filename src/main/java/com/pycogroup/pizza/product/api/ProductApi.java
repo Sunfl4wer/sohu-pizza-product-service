@@ -16,7 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,7 +34,6 @@ import com.pycogroup.pizza.product.common.Reason;
 import com.pycogroup.pizza.product.dto.ResponseCollectionDto;
 import com.pycogroup.pizza.product.dto.ResponseDto;
 import com.pycogroup.pizza.product.model.Category;
-import com.pycogroup.pizza.product.model.Product;
 import com.pycogroup.pizza.product.service.ProductService;
 
 @CrossOrigin(origins="*", maxAge = 3600)
@@ -128,7 +126,7 @@ public class ProductApi {
         links.add(LinkEntity.builder().href(currentPageUri).relation("Current page").method(RequestMethod.GET).build());
         links.add(LinkEntity.builder().href(nextPageUri).relation("Next page").method(RequestMethod.GET).build());
         links.add(LinkEntity.builder().href(lastPageUri).relation("Last page").method(RequestMethod.GET).build());
-        return new ResponseEntity<Object>(ResponseCollectionDto.builder().code(HttpStatus.OK.value()).data(response.getData()).meta(response.getMeta()).links(links).build(),
+        return new ResponseEntity<Object>(ResponseCollectionDto.builder().code(HttpStatus.OK.value()).data(response.getData()).meta(response.getMeta()).links(links.getLinks()).build(),
                                           headers,
                                           HttpStatus.OK);
       }
@@ -191,12 +189,12 @@ public class ProductApi {
         URI  firstPageUri = URI.create(baseUri + "/pizza/productcards?" + "size=" + size + "&page=" + "1");
         URI  lastPageUri = URI.create(baseUri + "/pizza/productcards?" + "size=" + size + "&page=" + String.valueOf(lastPage));
         links.add(LinkEntity.builder().href(firstPageUri).relation("First page").method(RequestMethod.GET).build());
-        links.add(LinkEntity.builder().href(previousPageUri).relation("Next page").method(RequestMethod.GET).build());
+        links.add(LinkEntity.builder().href(previousPageUri).relation("Previous page").method(RequestMethod.GET).build());
         links.add(LinkEntity.builder().href(currentPageUri).relation("Current page").method(RequestMethod.GET).build());
         links.add(LinkEntity.builder().href(nextPageUri).relation("Next page").method(RequestMethod.GET).build());
         links.add(LinkEntity.builder().href(lastPageUri).relation("Last page").method(RequestMethod.GET).build());
         body.add(links);
-        return new ResponseEntity<Object>(ResponseCollectionDto.builder().code(HttpStatus.OK.value()).data(response.getData()).meta(response.getMeta()).links(links).build(),
+        return new ResponseEntity<Object>(ResponseCollectionDto.builder().code(HttpStatus.OK.value()).data(response.getData()).meta(response.getMeta()).links(links.getLinks()).build(),
                                           headers,
                                           HttpStatus.OK);
       }
