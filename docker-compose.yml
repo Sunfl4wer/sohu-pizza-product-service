@@ -1,0 +1,25 @@
+version: '3'
+services:
+  mongo_product:
+    container_name: mongo_product
+    image: mongo:latest
+    volumes:
+     - mongo_product:/data/db
+    ports:
+     - "27017:27017"
+    hostname: mongo_product
+
+
+  docker-product-service:
+    depends_on:
+     - mongo_product
+    image: docker-product-service:latest
+    ports:
+     - "9090:9090"
+    hostname: docker-product-servie
+    links:
+     - mongo_product
+     
+volumes:
+  mongo_product:
+  
